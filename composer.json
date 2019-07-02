@@ -23,7 +23,7 @@
     "autoload": {
         "psr-4": {
             "EzSystems\\TagsFormTypeBundle\\": "src/bundle",
-            "Ez\\TagsFormType\\": "src/lib"
+            "EzSystems\\TagsFormType\\": "src/lib"
         }
     },
     "extra": {
