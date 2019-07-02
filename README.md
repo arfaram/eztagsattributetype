@@ -57,7 +57,7 @@ In your Listner you will get the json string saved in the database table `ezpage
 
 ```
 
-##Todo
+## Todo
 
 - Clean up the block configuration template as some values are hard coded. The Idea is to extend the block definition to add some parameters like rootTagId, showRootTag, locales etc.
 
