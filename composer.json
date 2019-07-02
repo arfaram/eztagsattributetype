@@ -1,0 +1,34 @@
+{
+    "name": "arfaram/eztagsattributetype",
+    "type": "ezplatform-bundle",
+    "description": "Add new tags attribute type for ezplatform landingpage blocks",
+    "keywords": [
+        "ezplatform",
+        "netgen",
+        "taxonomy",
+        "tagsbundle",
+        "tags"],
+    "homepage": "https://github.com/arfaram/eztagsattributetype",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Ramzi Arfaoui",
+            "email": "ramzi_arfa@hotmail.de"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+        "netgen/tagsbundle": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EzSystems\\TagsFormTypeBundle\\": "src/bundle",
+            "Ez\\TagsFormType\\": "src/lib"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

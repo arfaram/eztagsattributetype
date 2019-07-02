@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace EzSystems\TagsFormTypeBundle\Block\Attribute;
+namespace EzSystems\TagsFormType\Block\Attribute;
 
 use eZ\Publish\API\Repository\FieldTypeService;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Attribute\FormTypeMapper\AttributeFormTypeMapperInterface;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockAttributeDefinition;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockDefinition;
-use EzSystems\TagsFormTypeBundle\Form\Type\AttributeTagsType;
+use EzSystems\TagsFormType\Form\Type\AttributeTagsType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**

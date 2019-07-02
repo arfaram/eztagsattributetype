@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EzSystems\TagsFormTypeBundle\Form\Type;
+namespace EzSystems\TagsFormType\Form\Type;
 
 use eZ\Publish\API\Repository\FieldTypeService;
 use Symfony\Component\Form\AbstractType;
