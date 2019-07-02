@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\TagsFormTypeBundle\Form\Type\AttributeTagsType:
+        tags:
+            - { name: form.type }
+
+    EzSystems\TagsFormTypeBundle\Block\Attribute\TagsAttributeMapper:
+        tags:
+            - { name: ezplatform.page_builder.attribute_form_type_mapper, alias: tags }
