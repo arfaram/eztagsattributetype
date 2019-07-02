@@ -10,6 +10,11 @@ You can read about the available attribute type in eZPlatform here: https://doc.
 - EzPlatform Enterprise 2.3+
 
 ## Installation 
+
+```
+composer require arfaram/eztagsattributetype
+```
+
 Add below to the AppKernel
 
 ```
