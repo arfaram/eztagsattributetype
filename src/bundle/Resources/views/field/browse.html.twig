@@ -1,0 +1,28 @@
+<div class="jqmDialog parent-selector-tree browse-tags" id="parent-selector-browse-tree-{{ form.parent.vars.value.id }}">
+    <div class="jqmdIn">
+        <div class="jqmdTC">
+            <span class="jqmdTCLeft"></span>
+            <span class="jqDrag">{{ 'Browse tags'|trans() }}</span>
+            <span class="jqmdTCRight"></span>
+        </div>
+        <div class="jqmdBL">
+            <div class="jqmdBR">
+                <div class="jqmdBC">
+                    <div class="jqmdBCIn">
+                        <div class="tags-modal-tree">
+                            <div
+                                    class="tags-tree"
+                                    data-path="{{ path('netgen_tags_admin_tree_get_children', {tagId: '_tagId_'}) }}"
+                                    data-rootTagId="{% if form.vars.tags_options.subtree_limit is defined %}{{ form.vars.tags_options.subtree_limit }}{% else %}0{% endif %}"
+                                    data-showRootTag="true"
+                                    data-selectedTagPath=""
+                                    data-disableSubtree=""
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="jqmdX jqmClose"></a>
+    </div>
+</div>

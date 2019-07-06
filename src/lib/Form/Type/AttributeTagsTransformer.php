@@ -13,13 +13,18 @@ class AttributeTagsTransformer implements DataTransformerInterface
     /** @var \eZ\Publish\API\Repository\FieldType */
     private $fieldType;
 
+    /** @var string */
+    private $language;
+
     /**
      * AttributeTagsTransformer constructor.
      * @param \eZ\Publish\API\Repository\FieldType $fieldType
+     * @param string|null $language
      */
-    public function __construct(FieldType $fieldType)
+    public function __construct(FieldType $fieldType, ?string $language)
     {
         $this->fieldType = $fieldType;
+        $this->language = $language;
     }
 
     /**
@@ -54,13 +59,16 @@ class AttributeTagsTransformer implements DataTransformerInterface
         $locales = [];
 
         foreach ($value->tags as $tag) {
-            //TODO: get siteaccess language to handle tags translation, $mainKeyword should be the fallback
+            $tagKeyword = null;
+            if ($this->language) {
+                $tagKeyword = $tag->getKeyword($this->language);
+            }
             $mainKeyword = $tag->getKeyword();
 
             $ids[] = $tag->id;
             $parentIds[] = $tag->parentTagId;
-            $keywords[] = $mainKeyword;
-            $locales[] = $tag->mainLanguageCode;
+            $keywords[] = $tagKeyword !== null ? $tagKeyword : $mainKeyword;
+            $locales[] = $tagKeyword !== null ? $this->language : $tag->mainLanguageCode;
         }
 
         return [
@@ -104,7 +112,7 @@ class AttributeTagsTransformer implements DataTransformerInterface
                 'main_language_code' => $locales[$i],
             ];
         }
-        //Todo: We use the same structure like in the FieldType Implementation. Check if another format will not break the TagService.
+        //Todo: We use the same hash structure. Both methods check and add some values to the hash. Check if another format will not break the TagService.
         $value = $this->fieldType->fromHash($hash);
         $storage = $this->fieldType->toHash($value);
 

@@ -10,6 +10,7 @@ use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockAttri
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockDefinition;
 use EzSystems\TagsFormType\Form\Type\AttributeTagsType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class TagsAttributeMapper.
@@ -19,13 +20,20 @@ class TagsAttributeMapper implements AttributeFormTypeMapperInterface
     /** @var \eZ\Publish\API\Repository\FieldTypeService */
     private $fieldTypeService;
 
+    /** @var \Symfony\Component\HttpFoundation\RequestStack */
+    private $requestStack;
+
     /**
      * TagsAttributeMapper constructor.
      * @param \eZ\Publish\API\Repository\FieldTypeService $fieldTypeService
+     * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
      */
-    public function __construct(FieldTypeService $fieldTypeService)
-    {
+    public function __construct(
+        FieldTypeService $fieldTypeService,
+        RequestStack $requestStack
+    ) {
         $this->fieldTypeService = $fieldTypeService;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -47,8 +55,21 @@ class TagsAttributeMapper implements AttributeFormTypeMapperInterface
             'value',
             AttributeTagsType::class,
             [
+                'tags_options' => $blockAttributeDefinition->getOptions() ?? '',
+                'language_code' => $this->getPageBuilderLanguageCode(),
                 'constraints' => $constraints,
             ]
         );
+    }
+
+    /**
+     * @return |null
+     */
+    private function getPageBuilderLanguageCode()
+    {
+        $request = $this->requestStack->getCurrentRequest();
+        $requestBlockConfiguration = $request->get('request_block_configuration');
+
+        return $requestBlockConfiguration['language'] ?? null;
     }
 }

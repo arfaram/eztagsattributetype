@@ -36,34 +36,30 @@ blocks:
 
 ```
 
+You can also add some options:
+
+```
+                type: 'tags'
+                options:
+                    max_tags: 3 # max number of added tags 
+                    max_results: 3  # max results in the drop-down list
+                    subtree_limit: 513 # restrict access to a specific location in the keywords tree
+                    hide_root_tag: true # hide root tag
+                    edit_view: 'Default' # or 'Select'. ('Default' per default)
+```
+
+- Default View
+
 <img src="doc/tags_attribute_type.png" />
 
-In your Listner you will get the json string saved in the database table `ezpage_attributes`. below is an example how to access to the keywords
+- Select View
+
+<img src="doc/tags_attribute_type_select_view.png" />
+
+In your [Block Rendering Listener](https://doc.ezplatform.com/en/latest/guide/extending_page/#block-rendering-events) you will get the json value saved in the database table `ezpage_attributes`. below is an example how to access the data
 
 ```
-        $blockTagsValue = $blockValue->getAttribute('tags')->getValue();
-        if ($blockTagsValue === null ) {
-            $parameters['keywords'] = '';
-            /** @var TwigRenderRequest $renderRequest */
-            $renderRequest->setParameters($parameters);
-            return;
-        }
-
-        $tagsValue = json_decode($blockTagsValue, true);
-        $keywords = [];
-        foreach ($tagsValue as $value){
-            $mainLanguage = $value['main_language_code'];
-            $keywords[] = $value['keywords'][$mainLanguage];
-        }
-
-        //DO your stuff here
-
-        $parameters['keywords'] = $keywords;
+$blockValue = $event->getBlockValue();
+$tagsValue = json_decode($blockValue->getAttribute('tags')->getValue(), true);
 
 ```
-
-## Todo
-
-- Clean up the block configuration template as some values are hard coded. The Idea is to extend the block definition to add some parameters like rootTagId, showRootTag, locales etc.
-
-- Handle tags translation in the AttributeTagsTransformer
