@@ -1,5 +1,5 @@
 
-# EzSystemsTagsFormTypeBundle
+# Tags AttributeType for eZ Platform LandingPage blocks
 
 This bundle allows you to add new attribute type `tags` to the Landingpage blocks. It is based on the [NetgenTags Bundle](https://github.com/netgen/TagsBundle) and it uses the same autocomplete functionality on the same way like the eztags FieldType.
 
@@ -7,7 +7,7 @@ You can read about the available attribute type in eZPlatform here: https://doc.
 
 ## Requirement
 
-- EzPlatform Enterprise 2.3+
+- Ez Platform **Enterprise** 2.3+
 
 ## Installation 
 
@@ -63,3 +63,7 @@ $blockValue = $event->getBlockValue();
 $tagsValue = json_decode($blockValue->getAttribute('tags')->getValue(), true);
 
 ```
+
+## Example: Profiling Block (eZ Platform enterprise demo)
+
+https://github.com/arfaram/ezprofilerblock
