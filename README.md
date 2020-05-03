@@ -64,7 +64,6 @@ $tagsValue = json_decode($blockValue->getAttribute('tags')->getValue(), true);
 
 ```
 
-## Example: Profiling Block (eZ Platform enterprise demo)
-**Works only with eZ Platfrom 2.x**
+## Example: Profiler Block
 
 https://github.com/arfaram/ezprofilerblock
