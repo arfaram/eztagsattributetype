@@ -1,13 +1,13 @@
 
-# Tags AttributeType for eZ Platform LandingPage blocks
+# BlockTagAttributeTypeBundle for eZ Platform LandingPage blocks
 
-This bundle allows you to add new attribute type `tags` to the Landingpage blocks. It is based on the [NetgenTags Bundle](https://github.com/netgen/TagsBundle) and it uses the same autocomplete functionality on the same way like the eztags FieldType.
+This bundle allows you to add a new attribute type `tags` to the block definition. It requires the [NetgenTags Bundle](https://github.com/netgen/TagsBundle).
 
-You can read about the available attribute type in eZPlatform here: https://doc.ezplatform.com/en/latest/guide/extending_page/
+You can find the available attribute types in eZPlatform here: https://doc.ezplatform.com/en/latest/extending/extending_page/#creating-custom-page-blocks)
 
 ## Requirement
 
-- Ez Platform **Enterprise** 2.3+
+- Ez Platform **Enterprise** 3+
 
 ## Installation 
 
@@ -15,10 +15,10 @@ You can read about the available attribute type in eZPlatform here: https://doc.
 composer require arfaram/eztagsattributetype
 ```
 
-Add below to the AppKernel
+Add below line to `bundles.php`
 
 ```
-new EzSystems\TagsFormTypeBundle\EzSystemsTagsFormTypeBundle(),
+EzPlatform\BlockTagAttributeTypeBundle\EzPlatformBlockTagAttributeTypeBundle::class => ['all' => true],
 
 ```
 
@@ -36,7 +36,7 @@ blocks:
 
 ```
 
-You can also add some options:
+You can also additional options:
 
 ```
                 type: 'tags'
@@ -56,7 +56,7 @@ You can also add some options:
 
 <img src="doc/tags_attribute_type_select_view.png" />
 
-In your [Block Rendering Listener](https://doc.ezplatform.com/en/latest/guide/extending_page/#block-rendering-events) you will get the json value saved in the database table `ezpage_attributes`. below is an example how to access the data
+Below is an example on how to access the data in a custom [BlockListener](https://doc.ezplatform.com/en/latest/extending/extending_page/#creating-custom-page-blocks).
 
 ```
 $blockValue = $event->getBlockValue();
@@ -65,5 +65,6 @@ $tagsValue = json_decode($blockValue->getAttribute('tags')->getValue(), true);
 ```
 
 ## Example: Profiling Block (eZ Platform enterprise demo)
+**Works only with eZ Platfrom 2.x**
 
 https://github.com/arfaram/ezprofilerblock

@@ -1,7 +1,7 @@
 {
     "name": "arfaram/eztagsattributetype",
     "type": "ezplatform-bundle",
-    "description": "Add new tags attribute type for ezplatform landingpage blocks",
+    "description": "Add new tag attribute type for ezplatform landingpage blocks",
     "keywords": [
         "ezplatform",
         "netgen",
@@ -17,18 +17,18 @@
         }
     ],
     "require": {
-        "php": "~7.1",
-        "netgen/tagsbundle": "^3.4"
+        "php": "^7.3",
+        "netgen/tagsbundle": "^4.0"
     },
     "autoload": {
         "psr-4": {
-            "EzSystems\\TagsFormTypeBundle\\": "src/bundle",
-            "EzSystems\\TagsFormType\\": "src/lib"
+            "EzPlatform\\BlockTagAttributeTypeBundle\\": "src/bundle",
+            "EzPlatform\\BlockTagAttributeType\\": "src/lib"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }

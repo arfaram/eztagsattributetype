@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EzSystems\TagsFormType\Form\Type;
+namespace EzPlatform\BlockTagAttributeType\Form\Type;
 
 use eZ\Publish\API\Repository\FieldTypeService;
 use Symfony\Component\Form\AbstractType;
@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class AttributeTagsType.
  */
-class AttributeTagsType extends AbstractType
+class TagAttributeTypeType extends AbstractType
 {
     /**
      * @var \eZ\Publish\API\Repository\FieldTypeService */
@@ -44,7 +44,7 @@ class AttributeTagsType extends AbstractType
             ->add('keywords', HiddenType::class)
             ->add('locales', HiddenType::class)
             ->addModelTransformer(
-                new AttributeTagsTransformer($this->fieldTypeService->getFieldType('eztags'), $builder->getOption('language_code'))
+                new TagAttributeTypeTransformer($this->fieldTypeService->getFieldType('eztags'), $builder->getOption('language_code'))
             );
     }
 

@@ -4,10 +4,10 @@ services:
         autoconfigure: true
         public: false
 
-    EzSystems\TagsFormType\Form\Type\AttributeTagsType:
+    EzPlatform\BlockTagAttributeType\Form\Type\TagAttributeTypeType:
         tags:
             - { name: form.type }
 
-    EzSystems\TagsFormType\Block\Attribute\TagsAttributeMapper:
+    EzPlatform\BlockTagAttributeType\Block\Attribute\TagAttributeTypeMapper:
         tags:
             - { name: ezplatform.page_builder.attribute_form_type_mapper, alias: tags }

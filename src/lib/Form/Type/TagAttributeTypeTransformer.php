@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace EzSystems\TagsFormType\Form\Type;
+namespace EzPlatform\BlockTagAttributeType\Form\Type;
 
 use eZ\Publish\API\Repository\FieldType;
 use eZ\Publish\SPI\FieldType\Value;
 use Symfony\Component\Form\DataTransformerInterface;
 
-class AttributeTagsTransformer implements DataTransformerInterface
+class TagAttributeTypeTransformer implements DataTransformerInterface
 {
     /** @var \eZ\Publish\API\Repository\FieldType */
     private $fieldType;

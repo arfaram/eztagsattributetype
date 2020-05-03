@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace EzSystems\TagsFormType\Block\Attribute;
+namespace EzPlatform\BlockTagAttributeType\Block\Attribute;
 
 use eZ\Publish\API\Repository\FieldTypeService;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Attribute\FormTypeMapper\AttributeFormTypeMapperInterface;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockAttributeDefinition;
 use EzSystems\EzPlatformPageFieldType\FieldType\Page\Block\Definition\BlockDefinition;
-use EzSystems\TagsFormType\Form\Type\AttributeTagsType;
+use EzPlatform\BlockTagAttributeType\Form\Type\TagAttributeTypeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class TagsAttributeMapper.
  */
-class TagsAttributeMapper implements AttributeFormTypeMapperInterface
+class TagAttributeTypeMapper implements AttributeFormTypeMapperInterface
 {
     /** @var \eZ\Publish\API\Repository\FieldTypeService */
     private $fieldTypeService;
@@ -53,7 +53,7 @@ class TagsAttributeMapper implements AttributeFormTypeMapperInterface
     ): FormBuilderInterface {
         return $formBuilder->create(
             'value',
-            AttributeTagsType::class,
+            TagAttributeTypeType::class,
             [
                 'tags_options' => $blockAttributeDefinition->getOptions() ?? '',
                 'language_code' => $this->getPageBuilderLanguageCode(),
